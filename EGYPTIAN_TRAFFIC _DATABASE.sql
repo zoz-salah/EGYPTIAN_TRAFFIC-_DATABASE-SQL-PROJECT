@@ -426,3 +426,49 @@ where owner_id in (select owner_id
                    from violation
                    where fine_amount > (select avg(fine_amount)
                    from violation));
+
+--Zeyad Mohamed 
+
+SELECT o.owner_id , o.GOVERNORATE , ol.expiry_date 
+FROM OWNER o
+LEFT OUTER JOIN OWNER_LICENSE ol
+ON o.owner_id = ol.owner_id;
+
+
+
+SELECT officer_id , full_name , rank , governorate
+FROM TRAFFIC_OFFICER
+WHERE governorate = 'Cairo';
+
+SELECT gender , count(gender)
+FROM OWNER
+GROUP BY gender;
+
+SELECT o.owner_id, o.full_name, SUM(v.fine_amount) AS total_fines
+FROM OWNER o
+LEFT JOIN VIOLATION v ON o.owner_id = v.owner_id
+GROUP BY o.owner_id, o.full_name;
+
+UPDATE CAR_LICENSE
+SET license_status = 'Active'
+WHERE owner_id = 3;
+
+UPDATE VIOLATION
+SET paid_status = 'Paid'
+WHERE violation_id = 3;
+
+COMMIT; 
+
+DELETE FROM VIOLATION
+WHERE violation_id = 3;
+
+ROLLBACK;
+
+ALTER TABLE VEHICLE
+ADD fuel_type VARCHAR2(20);
+
+ALTER TABLE VEHICLE
+MODIFY fuel_type VARCHAR2(50);
+
+ALTER TABLE VEHICLE
+DROP COLUMN fuel_type;
