@@ -343,6 +343,25 @@ select *
 from owner
 where full_name = 'Sara Mahmoud Ibrahim';
 
+-- ziad wael
+
+SELECT 
+    o.full_name As owner_name,
+    o.national_id,
+    vh.plate_number,
+    v.violation_id,
+    v.violation_date,
+    v.violation_type,
+    v.location,
+    v.fine_amount,
+    v.paid_status
+FROM VIOLATION v, OWNER o, VEHICLE vh
+WHERE v.paid_status = 'Unpaid'
+AND v.owner_id = o.owner_id
+AND   v.vehicle_id  = vh.vehicle_id
+AND v.owner_id IN (SELECT owner_id FROM OWNER)
+ORDER BY v.fine_amount DESC;
+
 -- osama 
 
 select rank , phone ,badge_number AS nnnumber
