@@ -9,7 +9,7 @@ This project was developed as a university database project by a team of **7 Com
 * ERD Design
 * Database Mapping
 * SQL Implementation
-* Constraints
+* Constraint
 * Triggers
 * Views
 * Functions
